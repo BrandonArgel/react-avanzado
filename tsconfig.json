@@ -1,0 +1,44 @@
+{
+  "outDir": "./dist",
+  "compilerOptions": {
+    "target": "ES5",
+    "jsx": "react",
+    "experimentalDecorators": true,
+    "module": "ESNext",
+    "baseUrl": "src",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "noImplicitAny": true,
+    "strictNullChecks": false,
+    "strictFunctionTypes": true,
+    "strictBindCallApply": true,
+    "strictPropertyInitialization": false,
+    "useUnknownInCatchVariables": true,
+    "alwaysStrict": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitOverride": true
+  },
+  "exclude": [
+    "node_modules",
+    "webpack.config.js",
+  ],
+  "include": [
+    "src/**/*"
+  ],
+  "paths": {
+    "@/*": [
+      "src/*"
+    ],
+    "@components/*": [
+      "src/components/*"
+    ],
+    "@styles/*": [
+      "src/styles/*"
+    ],
+  }
+}
