@@ -4,7 +4,7 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 
 const SRC_DIR = path.resolve(__dirname, "src");
-const BUILD_DIR = path.resolve(__dirname, "dist");
+const BUILD_DIR = path.resolve(__dirname, "build");
 
 const entry = path.join(SRC_DIR, "index.tsx");
 const html = path.join(SRC_DIR, "index.dev.html");
@@ -15,7 +15,7 @@ module.exports = {
     path: BUILD_DIR,
     filename: "bundle.js",
   },
-  mode: "production",
+  mode: "development",
   module: {
     rules: [
       {
@@ -37,42 +37,18 @@ module.exports = {
         ],
       },
       {
-        test: /\.module\.s(a|c)ss$/,
-        loader: [
-          isDevelopment ? "style-loader" : MiniCssExtractPlugin.loader,
-          {
-            loader: "css-loader",
-            options: {
-              modules: true,
-              sourceMap: isDevelopment,
-            },
-          },
-          {
-            loader: "sass-loader",
-            options: {
-              sourceMap: isDevelopment,
-            },
-          },
-        ],
-      },
-      {
-        test: /\.s(a|c)ss$/,
-        exclude: /\.module.(s(a|c)ss)$/,
-        loader: [
-          isDevelopment ? "style-loader" : MiniCssExtractPlugin.loader,
-          "css-loader",
-          {
-            loader: "sass-loader",
-            options: {
-              sourceMap: isDevelopment,
-            },
-          },
+        test: /\.scss$/,
+        use: [
+          { loader: "style-loader" }, // to inject the result into the DOM as a style block
+          { loader: "css-modules-typescript-loader" }, // to generate a .d.ts module next to the .scss file (also requires a declaration.d.ts with "declare modules '*.scss';" in it to tell TypeScript that "import styles from './styles.scss';" means to load the module "./styles.scss.d.td")
+          { loader: "css-loader", options: { modules: true } }, // to convert the resulting CSS to Javascript to be bundled (modules:true to rename CSS classes in output to cryptic identifiers, except if wrapped in a :global(...) pseudo class)
+          { loader: "sass-loader" }, // to convert SASS to CSS
         ],
       },
     ],
   },
   resolve: {
-    extensions: [".ts", ".tsx", ".js", ".jsx", ".scss"],
+    extensions: [".ts", ".tsx", ".js", ".jsx", ".css", ".scss"],
     modules: [SRC_DIR, "node_modules"],
     alias: {
       "@components": SRC_DIR + "/components",
@@ -87,8 +63,8 @@ module.exports = {
       publicPath: "/",
     }),
     new MiniCssExtractPlugin({
-      filename: isDevelopment ? "[name].css" : "[name].[hash].css",
-      chunkFilename: isDevelopment ? "[id].css" : "[id].[hash].css",
+      filename: "[name].css",
+      chunkFilename: "[id].css",
     }),
     new CleanWebpackPlugin(),
   ],
