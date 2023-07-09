@@ -1,0 +1,4 @@
+dist
+api/**/*
+*.config.js
+*.config.dev.js

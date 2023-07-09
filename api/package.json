@@ -4,10 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "deploy": "now -t <tu-token>",
+    "deploy": "vercel --prod",
     "start:api": "NODE_ENV=production node index.js",
-    "dev:api": "nodemon index.js --ignore db.json",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev:api": "nodemon index.js --ignore db.json"
   },
   "author": "",
   "license": "ISC",
@@ -17,7 +16,6 @@
     "cors": "2.8.5",
     "express": "4.17.0",
     "express-jwt": "5.3.1",
-    "graphql": "14.3.0",
     "jsonwebtoken": "8.5.1",
     "lowdb": "1.0.0",
     "uuid": "3.3.2"

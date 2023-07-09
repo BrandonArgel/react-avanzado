@@ -1,40 +1,57 @@
 {
-  "name": "react-avanzado",
-  "version": "1.0.0",
-  "description": "**¡Sígueme en Youtube para más contenido de React y Javascript!** 👉 https://www.youtube.com/midudev",
-  "main": "webpack.config.js",
-  "scripts": {
-    "build:dev": "webpack-dev-server --config=webpack.config.dev.js --progress --hot",
-    "build:prod": "webpack --config=webpack.config.js --progress --mode=production",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "devDependencies": {
-    "@babel/core": "^7.22.5",
-    "@babel/preset-env": "^7.22.5",
-    "@babel/preset-react": "^7.22.5",
-    "@babel/preset-typescript": "^7.22.5",
-    "@types/node-sass": "^4.11.3",
-    "@types/react": "^18.2.14",
-    "@types/react-dom": "^18.2.6",
-    "babel-loader": "^9.1.2",
-    "clean-webpack-plugin": "^4.0.0",
-    "css-loader": "^6.8.1",
-    "css-modules-typescript-loader": "^4.0.1",
-    "html-webpack-plugin": "^5.5.3",
-    "mini-css-extract-plugin": "^2.7.6",
-    "sass-loader": "^13.3.2",
-    "style-loader": "^3.3.3",
-    "ts-loader": "^9.4.4",
-    "typescript": "^5.1.6",
-    "webpack": "^5.88.1",
-    "webpack-cli": "^5.1.4",
-    "webpack-dev-server": "^4.15.1"
-  },
-  "dependencies": {
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0"
-  }
+	"name": "react-avanzado",
+	"version": "1.0.0",
+	"description": "**¡Sígueme en Youtube para más contenido de React y Javascript!** 👉 https://www.youtube.com/midudev",
+	"main": "webpack.config.js",
+	"scripts": {
+		"build:dev": "webpack-dev-server --config=webpack.config.dev.js --progress --hot",
+		"build:prod": "webpack --config=webpack.config.js --progress",
+		"format": "prettier --write \"src/**/*.{js,jsx,ts,tsx,json,html,css,scss,md}\"",
+		"lint": "eslint --ext .js,.jsx,.ts,.tsx src"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"devDependencies": {
+		"@babel/core": "^7.22.5",
+		"@babel/preset-env": "^7.22.5",
+		"@babel/preset-react": "^7.22.5",
+		"@babel/preset-typescript": "^7.22.5",
+		"@types/node-sass": "^4.11.3",
+		"@types/react": "^18.2.14",
+		"@types/react-dom": "^18.2.6",
+		"@typescript-eslint/eslint-plugin": "^5.61.0",
+		"babel-loader": "^9.1.2",
+		"clean-webpack-plugin": "^4.0.0",
+		"css-loader": "^6.8.1",
+		"css-modules-typescript-loader": "^4.0.1",
+		"eslint": "^8.44.0",
+		"eslint-config-prettier": "^8.8.0",
+		"eslint-config-standard-with-typescript": "^36.0.0",
+		"eslint-plugin-import": "^2.27.5",
+		"eslint-plugin-n": "^15.7.0",
+		"eslint-plugin-promise": "^6.1.1",
+		"eslint-plugin-react": "^7.32.2",
+		"html-webpack-plugin": "^5.5.3",
+		"mini-css-extract-plugin": "^2.7.6",
+		"prettier": "^2.8.8",
+		"sass-loader": "^13.3.2",
+		"standard": "^17.1.0",
+		"style-loader": "^3.3.3",
+		"ts-loader": "^9.4.4",
+		"typescript": "^5.1.6",
+		"webpack": "^5.88.1",
+		"webpack-cli": "^5.1.4",
+		"webpack-dev-server": "^4.15.1"
+	},
+	"dependencies": {
+		"react": "^18.2.0",
+		"react-dom": "^18.2.0"
+	},
+	"standard": {
+		"ignore": [
+			"/src/styles/**/*",
+			"/api/**/*"
+		]
+	}
 }
